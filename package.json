@@ -2,9 +2,12 @@
   "name": "swe-foam",
   "version": "1.0.0",
   "description": "take-home",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/Leelsmuth/swe-foam/issues"
   },
-  "homepage": "https://github.com/Leelsmuth/swe-foam#readme"
+  "homepage": "https://github.com/Leelsmuth/swe-foam#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-async-handler": "^1.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  }
 }
