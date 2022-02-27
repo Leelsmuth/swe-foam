@@ -9,11 +9,9 @@ function App() {
   const region = 'us-west-2';
   const bucket = 'take-home-foam-challenge';
 
-  const filterList = async (val, pageNumber = '') => {
+  const filterList = async (val) => {
     try {
-      const { data } = await axios.get(`/api/pictures?pageNumber=${pageNumber}`);
-
-      console.log('data', data);
+      const { data } = await axios.get('/api/pictures');
 
       if (val !== 'show-all') {
         const filteredPictures = data.pictures.filter(picture => picture.category === val);
@@ -43,7 +41,7 @@ function App() {
 
     const newCategory = { category: category };
 
-    const { data } = await axios.put(
+    await axios.put(
       `api/pictures/${id}`,
       newCategory,
     );
